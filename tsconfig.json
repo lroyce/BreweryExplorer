@@ -1,0 +1,8 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "strict": true,
+    "rootDir": "ts",
+    "outDir": "static/build"
+  }
+}

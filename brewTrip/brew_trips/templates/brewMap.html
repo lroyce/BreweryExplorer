@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="{% static 'build/foo.js' %}"></script>
+  </head>
+
+<div class="plan">
+{% if location %}
+  <li >Name: <strong>{{location.name}}</strong></li>
+  <p >Street: <strong>{{location.street}}</strong></p>
+  <p >city: <strong>{{location.city}}</strong></p>
+  <p >city: <strong>{{location.state}}</strong></p>
+  <p >city: <strong>{{location.zip}}</strong></p>
+  <p >city: <strong>{{location.phone}}</strong></p>
+  <a href='{{location.url}}'>{{location.name}} website</a>
+  <iframe src="{{location.blogmap}}"></iframe>
+{%else%}
+  <h3> No data to display, please enter an API Key to .env</h3>
+{% endif %}
+</div>
+</html>
