@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BrewForm
 from .models import BrewTrips
+import requests
 from django.contrib.auth.decorators import login_required
 
 
@@ -39,3 +40,6 @@ def delete(request, plan_id):
         plan = get_object_or_404(BrewTrips, pk=plan_id)
         plan.delete()
         return redirect('home', user_id=request.user.id)
+
+
+def brewMap(request):
