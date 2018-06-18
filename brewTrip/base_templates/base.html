@@ -1,9 +1,33 @@
-inside of base
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="#home">Your Trips</a>
+      <a href="#home">Create a Trip</a>
+      <a href="#news">Login</a>
+      <a href="#contact">Logout</a>
+      <a href="#about">SignUp</a>
 
-Before the block
 
-{% block base %}
+      <div class="container">
+        {% block base %}
 
-{% endblock%}
-
-After the block
+        {% endblock%}
+      </div>
+      <footer class="mt-5 text-muted">
+      <div class="container">
+        <p class='text-danger text-center'>&copy; BrewTrip <i class="fab fa-python"></i> {% now 'Y'%}</p>
+      </div>
+      </footer>
+    </div>
+  </body>
+</html>

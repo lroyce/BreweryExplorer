@@ -4,7 +4,7 @@ def signup(request):
     return render(request,'signup.html',{'title':'Signup'})
 
 def login(request):
-    pass
+    return render(request, 'login.html',{'title':'Please Login'})
 
 def logout(request):
     pass
