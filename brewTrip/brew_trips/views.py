@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .forms import BrewForm
 from .models import BrewTrips
+from django.conf import settings
 import requests
-from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -43,3 +44,10 @@ def delete(request, plan_id):
 
 
 def brewMap(request):
+    key = settings.BEER_MAP_KEY
+    location = {}
+    if key:
+        call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/lyons,co&s=json")
+        location = call.json()
+        print(location[0]['name'])
+    return render(request, 'brewMap.html', {'location':location[0]})
