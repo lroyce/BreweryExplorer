@@ -1,7 +1,32 @@
+<!DOCTYPE html>
 {% extends 'base.html' %}
-
 {% block base %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Your Trips</title>
+  </head>
+  <body>
+    <h2>Your BrewTrips</h2>
+    <div class="breweries">
+      {%if breweries%}
+      {% for brewery in breweries%}
+      <div>
+        <div>
+          Added by {{brewery.brew_user}} on: {{brewery.prettify_datetime}}
+        </div>
+        <div class="card-body">
+          <h2>{{brewery.brewery_name}}</h2>
+          <p>{{brewery.brewery_address}}</p>
+          <a href="{{brewery.brewery_url}}">{{brewery.brewery_url}}</a>
+        </div>
+      </div>
+      {% endfor %}
+      {%else%}
+      <h2 class='breweries'>No breweries added</h2>
+      {%endif%}
+    </div>
 
-<h1>Hello World from inside of books/templates/home.html</h1>
-
-{% endblock%}
+  </body>
+</html>
+{%endblock%}

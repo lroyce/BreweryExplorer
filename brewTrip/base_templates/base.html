@@ -8,43 +8,44 @@
     <meta name="author" content="">
     <title>{{title}}</title>
     <link rel="stylesheet" href="{% static '/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Bellefair|IM+Fell+DW+Pica|IM+Fell+English+SC" rel="stylesheet">
   </head>
   <body>
-    <div class="topnav">
-      <a href="#home">Your Trips</a>
-      <a href="#home">Create a Trip</a>
 
-      <!-- <a href="{% url 'logout'%}">Logout</a> -->
-      {% if user.is_authenticated %}
+      <div class="topnav">
+        {% if user.is_authenticated %}
 
-      <li class="nav-item">
-        <a class="text-light nav-link"
-        href="javascript:{document.getElementById('logout').submit()}">logout</a>
-      </li>
 
-      <form id="logout"action="{% url 'logout' %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" />
-      </form>
+        <a >Welcome {{user}}!</a>
+        <a href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+        <form id="logout"action="{% url 'logout' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" />
+        </form>
 
-      {% else %}
-      <a href="{% url 'login'%}">Login</a>
-      <a href="{% url 'signup'%}">SignUp</a>
-      {% endif %}
-      <li class="nav-item">
-        <a class="text-light nav-link" href="{% url 'admin:index'%}">Admin</a>
-      </li>
+        <a href="#home">Your Trips</a>
+        <a href="{%url 'create'%}">Create a Trip</a>
 
-      <div class="container">
-        {% block base %}
+        <!-- <a href="{% url 'logout'%}">Logout</a> -->
 
-        {% endblock%}
+        {% else %}
+
+        <a href="{% url 'login'%}">Login</a>
+        <a href="{% url 'signup'%}">SignUp</a>
+        {% endif %}
+        <a href="{% url 'admin:index'%}">Admin</a>
       </div>
-      <footer class="mt-5 text-muted">
-      <div class="container">
-        <p class='text-danger text-center'>&copy; BrewTrip <i class="fab fa-python"></i> {% now 'Y'%}</p>
-      </div>
-      </footer>
-    </div>
+
+        <div class="container">
+          {% block base %}
+
+          {% endblock%}
+        </div>
+        <footer class="mt-5 text-muted">
+        <div class="container">
+          <p class='text-danger text-center'>&copy; BrewTrip <i class="fab fa-python"></i> {% now 'Y'%}</p>
+        </div>
+        </footer>
+
   </body>
 </html>
