@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+  </head>
+  <body>
+    {% block base %}
+    <div class="login">
+    {% if error %}
+      <h5 class="login">{{error}}</h5>
+      {%else%}
+      <h2 class="login-errors">Login Below</h2>
+      {%endif%}
+      <form class="login-page" action="{% url 'login'%}" method="POST">
+        {% csrf_token %}
+        <div class='username-password'>
+          Username:
+          <input class='username-password' type="text" name="username" required />
+        </div>
+        <div class='username-password'>
+          Password:
+          <input class='username-password' type="password" name="password" required />
+        </div>
+        <div>
+          <input class='username-password' type="submit" value="Login" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+{%endblock%}

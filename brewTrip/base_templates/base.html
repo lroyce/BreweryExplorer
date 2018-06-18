@@ -13,10 +13,27 @@
     <div class="topnav">
       <a href="#home">Your Trips</a>
       <a href="#home">Create a Trip</a>
-      <a href="#news">Login</a>
-      <a href="#contact">Logout</a>
-      <a href="#about">SignUp</a>
 
+      <!-- <a href="{% url 'logout'%}">Logout</a> -->
+      {% if user.is_authenticated %}
+
+      <li class="nav-item">
+        <a class="text-light nav-link"
+        href="javascript:{document.getElementById('logout').submit()}">logout</a>
+      </li>
+
+      <form id="logout"action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" />
+      </form>
+
+      {% else %}
+      <a href="{% url 'login'%}">Login</a>
+      <a href="{% url 'signup'%}">SignUp</a>
+      {% endif %}
+      <li class="nav-item">
+        <a class="text-light nav-link" href="{% url 'admin:index'%}">Admin</a>
+      </li>
 
       <div class="container">
         {% block base %}
