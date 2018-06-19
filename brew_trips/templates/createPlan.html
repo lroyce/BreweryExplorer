@@ -13,13 +13,15 @@
 <div class='plan'>
   <h2>Create new BrewTrip</h2>
   {%endif%}
+
   <form action="{% url 'create' %}" method="POST">
 
     {% csrf_token %}
     {% for field in plan_form %}
     {% if field.name == 'brewery_address' %}
 
-    <div class='plan-fields'>{{ field.label }}:
+    <div class='plan-fields'>
+      {{ field.label }}:
       <textarea name="{{field.name}}"></textarea>
     </div>
     <span class="error">{{field.errors}}</span>

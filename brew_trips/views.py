@@ -13,26 +13,39 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+#
+# @login_required
+# def create(request):
+#     if request.method == 'POST':
+#         plan_form = BrewForm(data=request.POST)
+#         if plan_form.is_valid():
+#             plan = plan_form.save(commit=False)
+#             plan.brew_user = request.user
+#             plan.save()
+#             return redirect('home')
+#     else:
+#         plan_form = BrewForm()
+#
+#     return render(request, 'createPlan.html', {
+#     'title':'Add a new trip',
+#     'plan_form': plan_form
+#     })
 
 @login_required
 def create(request):
     if request.method == 'POST':
-        plan_form = BrewForm(data=request.POST)
-        if plan_form.is_valid():
-            plan = plan_form.save(commit=False)
-            # We'll set commit=False so we can populate our model with non model form data
+        locations = BrewForm(data=request.POST)
+        if locations.is_valid():
+            plan = locations.save(commit=False)
             plan.brew_user = request.user
-            # Now we can insert the logged in user, they were attached to the request body
             plan.save()
             return redirect('home')
     else:
-        plan_form = BrewForm()
-
+        locations = BrewForm()
     return render(request, 'createPlan.html', {
     'title':'Add a new trip',
-    'plan_form': plan_form
+    'locations': locations
     })
-
 
 
 @login_required
@@ -45,9 +58,9 @@ def delete(request, plan_id):
 
 def brewMap(request):
     key = settings.BEER_MAP_KEY
-    location = {}
+    locations = {}
     if key:
-        call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/lyons,co&s=json")
-        location = call.json()
-        print(location[0]['name'])
-    return render(request, 'brewMap.html', {'location':location[0]})
+        call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/eugene,or&s=json")
+        locations = call.json()
+        print(locations[0])
+    return render(request, 'brewMap.html', {'locations':locations})

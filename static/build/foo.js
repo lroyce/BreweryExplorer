@@ -5,4 +5,4 @@ var add = function (a, b) {
     return result;
 };
 add(1, 2);
-console.log(add(4, 5));
+add(4, 5);

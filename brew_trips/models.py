@@ -14,4 +14,4 @@ class BrewTrips(models.Model):
     def __str__(self):
         return self.brewery_name
     def prettify_datetime(self):
-        return self.added_date.strftime('%b %b %y')
+        return self.added_date.strftime('%B %e %Y')

@@ -7,15 +7,37 @@
   </head>
 
 <div class="plan">
-{% if location %}
-  <li >Name: <strong>{{location.name}}</strong></li>
-  <p >Street: <strong>{{location.street}}</strong></p>
-  <p >city: <strong>{{location.city}}</strong></p>
-  <p >city: <strong>{{location.state}}</strong></p>
-  <p >city: <strong>{{location.zip}}</strong></p>
-  <p >city: <strong>{{location.phone}}</strong></p>
-  <a href='{{location.url}}'>{{location.name}} website</a>
-  <iframe src="{{location.blogmap}}"></iframe>
+{% if locations %}
+{%for location in locations%}
+<form action="{% url 'create' %}" method="POST">
+  {% csrf_token %}
+    <li >{{location.label}}: <strong>{{location.name}}</strong></li>
+    <input type="hidden" name="{{location.name}}" />
+
+    <!-- <p >Street: <strong>{{location.street}}</strong></p> -->
+    <!-- <input type="hidden" name="{{location.address}}" /> -->
+
+    <!-- <p >City: <strong>{{location.city}}</strong></p> -->
+    <!-- <input type="hidden" name="{{location.city}}" /> -->
+
+    <!-- <p >State: <strong>{{location.state}}</strong></p> -->
+    <!-- <input type="hidden" name="{{location.state}}" /> -->
+
+    <!-- <p >Zip: <strong>{{location.zip}}</strong></p> -->
+    <!-- <input type="hidden" name="{{location.zip}}" /> -->
+
+    <!-- <p >Phone: <strong>{{location.phone}}</strong></p> -->
+    <!-- <input type="hidden" name="{{location.phone}}" /> -->
+
+    <!-- <a href='{{location.url}}'>{{location.name}} website</a> -->
+    <!-- <input type="hidden" name="{{location.url}}" /> -->
+
+    <!-- <iframe src="{{location.blogmap}}"></iframe> -->
+    <div>
+      <input class="plan-button" type="submit" value="Add Brewery" />
+    </div>
+</form>
+  {% endfor%}
 {%else%}
   <h3> No data to display, please enter an API Key to .env</h3>
 {% endif %}
