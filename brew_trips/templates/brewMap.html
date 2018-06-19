@@ -1,45 +1,41 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 {% load static %}
+{% block base %}
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <script src="{% static 'build/foo.js' %}"></script>
-  </head>
+
+<head>
+  <meta charset="utf-8">
+  <script src="{% static 'build/foo.js' %}"></script>
+</head>
 
 <div class="plan">
-{% if locations %}
-{%for location in locations%}
-<form action="{% url 'brewmap' %}" method="POST">
-  {% csrf_token %}
-    <li >Name: <strong>{{location.name}}</strong></li>
-    <input type="hidden" name="brewery_name"value="{{location.name}}" />
+  {% if locations %}
+  {%for location in locations%}
+  <form action="{% url 'brewmap' %}" method="POST">
+    {% csrf_token %}
+    <p><strong>{{location.name}}</strong></p>
+    <input type="hidden" name="brewery_name" value="{{location.name}}" />
 
-    <p>Street: <strong>{{location.street}}</strong></p>
-    <!-- <input type="hidden" value="{{location.}}"name="{{location.street}}" />  -->
+    <p>Street: {{location.street}}</p>
 
-    <p>City: <strong>{{location.city}}</strong></p>
-    <!-- <input type="hidden" name="brewery_address"value="{{location.city}}" /> -->
+    <p>City: {{location.city}}, {{location.state}} {{location.zip}}</p>
 
-    <p>State: <strong>{{location.state}}</strong></p>
-    <!-- <input type="hidden" value="{{location.}}"name="{{location.state}}" /> -->
+    <input type="hidden" name="brewery_address" value="{{location.street}} {{location.city}}, {{location.state}} {{location.zip}}" />
 
-    <p>Zip: <strong>{{location.zip}}</strong></p>
-    <input type="hidden" name="brewery_address" value="{{location.street}}" />
-
-    <p>Phone: <strong>{{location.phone}}</strong></p>
-    <!-- <input type="hidden" value="{{location.}}"name="{{location.phone}}" /> --> -->
+    <p>Phone: {{location.phone}}</p>
 
     <a href='{{location.url}}'>{{location.name}} website</a>
-    <input type="hidden" name="brewery_url"value="{{location.url}}" />
+    <input type="hidden" name="brewery_url" value="{{location.url}}" />
 
-    <!-- <iframe src="{{location.blogmap}}"></iframe> -->
     <div>
       <input class="plan-button" type="submit" value="Add Brewery" />
     </div>
-</form>
+  </form>
   {% endfor%}
-{%else%}
-  <h3> No data to display, please enter an API Key to .env</h3>
-{% endif %}
+  {%else%}
+  <h3> No data to display, please enter an API Key to .env</h3> {% endif %}
 </div>
+
 </html>
+{% endblock%}

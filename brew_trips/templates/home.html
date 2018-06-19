@@ -12,15 +12,28 @@
       {%if breweries%}
       {% for brewery in breweries%}
       <div>
+
         <div class="card-body">
           <h2>{{brewery.brewery_name}}</h2>
           <p>{{brewery.brewery_address}}</p>
           <a href="{{brewery.brewery_url}}">{{brewery.brewery_url}}</a>
-          <div>
-            Added on {{brewery.prettify_datetime}}
-          </div>
+
+            <p>Added on {{brewery.prettify_datetime}}</p>
+
+
+          <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
+            Remove Brewery
+          </a>
+          <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
+            {%csrf_token%}
+            <!-- <input type="hidden" name="brewery.id" value="{{brewery.id}}" /> -->
+            <input type="hidden"  />
+
+          </form>
+
         </div>
       </div>
+
       {% endfor %}
       {%else%}
       <h2 class='breweries'>No breweries added</h2>
