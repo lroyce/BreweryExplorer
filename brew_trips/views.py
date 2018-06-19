@@ -13,7 +13,6 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
-#
 # @login_required
 # def create(request):
 #     if request.method == 'POST':

@@ -6,8 +6,8 @@ class BrewTrips(models.Model):
     brewery_name = models.CharField(max_length = 100)
     brewery_address = models.CharField(max_length = 100)
     brewery_url = models.CharField(max_length = 40)
-    latitude = models.CharField(max_length = 20)
-    longitude = models.CharField(max_length = 20)
+    latitude = models.CharField(max_length = 20,blank=True)
+    longitude = models.CharField(max_length = 20,blank=True)
     added_date = models.DateTimeField(default=timezone.now)
     brew_user = models.ForeignKey(User, on_delete=models.CASCADE)
 
