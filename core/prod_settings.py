@@ -27,7 +27,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 SECRET_KEY = config('SECRET_KEY')
 BEER_MAP_KEY = config('BEER_MAP_KEY',default='')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
