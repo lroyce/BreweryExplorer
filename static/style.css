@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-
     font-size: 20px;
     /* font-family: 'IM Fell English SC', serif; */
     /* font-family: 'IM Fell DW Pica', serif; */
@@ -56,11 +55,26 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-
   left: 20px;
   margin: 10px;
 }
 
 .error {
   color: red;
+}
+
+.form-button {
+  width: 110px;
+  height: 45px;
+  background-color: lightgrey;
+  border-radius: 5%;
+  border: 1px solid black;
+  margin: 10px;
+  font-family: 'IM Fell DW Pica', serif;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#url {
+  color: black;
 }

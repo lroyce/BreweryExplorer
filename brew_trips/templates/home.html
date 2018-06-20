@@ -7,33 +7,29 @@
     <title>Your Trips</title>
   </head>
   <body>
+<form method='/save/'>
+    <input id="city-search" type="text">Enter Your City </input>
+</form>
     <h2>Your BrewTrips</h2>
     <div class="breweries">
       {%if breweries%}
       {% for brewery in breweries%}
       <div>
-
         <div class="card-body">
           <h2>{{brewery.brewery_name}}</h2>
           <p>{{brewery.brewery_address}}</p>
           <a href="{{brewery.brewery_url}}">{{brewery.brewery_url}}</a>
-
-            <p>Added on {{brewery.prettify_datetime}}</p>
-
-
+          <p>Added on {{brewery.prettify_datetime}}</p>
           <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
-            Remove Brewery
+          <button class="form-button">Remove Brewery</button>
           </a>
           <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
             {%csrf_token%}
             <!-- <input type="hidden" name="brewery.id" value="{{brewery.id}}" /> -->
-            <input type="hidden"  />
-
+            <input type="hidden"/>
           </form>
-
         </div>
       </div>
-
       {% endfor %}
       {%else%}
       <h2 class='breweries'>No breweries added</h2>

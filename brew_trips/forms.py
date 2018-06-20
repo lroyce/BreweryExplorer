@@ -4,4 +4,4 @@ from .models import BrewTrips
 class BrewForm(ModelForm):
     class Meta():
         model = BrewTrips
-        fields = ['brewery_name','brewery_address','brewery_url','latitude','longitude',]
+        fields = ['brewery_city','brewery_name','brewery_address','brewery_url','latitude','longitude',]

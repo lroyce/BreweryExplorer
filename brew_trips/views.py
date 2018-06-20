@@ -33,7 +33,25 @@ def brewmap(request):
         return render(request, 'brewmap.html', {
         'locations':locations,
         })
-#
+
+@login_required
+def delete(request,id):
+    if request.method == 'POST':
+        plan = get_object_or_404(BrewTrips,pk=id)
+        plan.delete()
+        return redirect('home')
+
+
+def save(request):
+    if request.method == 'POST':
+        city_search = BrewForm(data=request.POST)
+        if city.is_valid():
+            brewery_city = city_search.save(commit=False)
+            brewery_city.brew_user = request.user
+            brewery_city.save()
+            return HTTPResponse
+
+
 # def create(request):
 #     if request.method == 'POST':
 #         plan_form = BrewForm(data=request.POST)
@@ -50,12 +68,6 @@ def brewmap(request):
 #     'plan_form': plan_form
 #     })
 
-@login_required
-def delete(request,id):
-    if request.method == 'POST':
-        plan = get_object_or_404(BrewTrips,pk=id)
-        plan.delete()
-        return redirect('home')
 
 
 # def brewMap(request):

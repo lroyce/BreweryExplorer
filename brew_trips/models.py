@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class BrewTrips(models.Model):
+    brewery_city = models.CharField(max_length = 40,blank=True)
     brewery_name = models.CharField(max_length = 100)
     brewery_address = models.CharField(max_length = 100)
     brewery_url = models.CharField(max_length = 40)

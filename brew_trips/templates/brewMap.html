@@ -17,9 +17,9 @@
     <p><strong>{{location.name}}</strong></p>
     <input type="hidden" name="brewery_name" value="{{location.name}}" />
 
-    <p>Street: {{location.street}}</p>
+    <p>Address: {{location.street}}</p>
 
-    <p>City: {{location.city}}, {{location.state}} {{location.zip}}</p>
+    <p>{{location.city}}, {{location.state}} {{location.zip}}</p>
 
     <input type="hidden" name="brewery_address" value="{{location.street}} {{location.city}}, {{location.state}} {{location.zip}}" />
 
@@ -29,13 +29,13 @@
     <input type="hidden" name="brewery_url" value="{{location.url}}" />
 
     <div>
-      <input class="plan-button" type="submit" value="Add Brewery" />
+      <input class="form-button" type="submit" value="Add Brewery" />
     </div>
+    <hr>
   </form>
   {% endfor%}
   {%else%}
   <h3> No data to display, please enter an API Key to .env</h3> {% endif %}
 </div>
-
 </html>
 {% endblock%}
