@@ -4,7 +4,7 @@ from .forms import BrewForm
 from .models import BrewTrips
 from django.conf import settings
 import requests
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 def home(request):
     context = {
@@ -13,27 +13,43 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+def brewapi(request):
+    key = settings.BEER_MAP_KEY
+    locations = {}
+    if 'city-search' in request.GET:
+        city = request.GET['city-search']
+        print(city)
+        url = f"http://beermapping.com/webservice/loccity/{key}/{city}&s=json"
+        print(url)
+        call = requests.get(url)
+        locations = call.json()
+    return render(request, 'brewmap.html', {
+    'locations':locations,
+    })
+
+
+
 @login_required
 def brewmap(request):
-    key = settings.BEER_MAP_KEY
-    # search = request.POST('search-city')
-    locations = {}
-    if key:
-        call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/portland,or&s=json")
-        # call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/{search}&s=json")
-        locations = call.json()
-        if request.method == 'POST':
-            plan_form = BrewForm(data=request.POST)
-            if plan_form.is_valid():
-                plan = plan_form.save(commit=False)
-                plan.brew_user = request.user
-                plan.save()
-                return redirect('home')
-        else:
-            plan_form = BrewForm()
-        return render(request, 'brewmap.html', {
-        'locations':locations,
-        })
+    # key = settings.BEER_MAP_KEY
+    # # search = request.POST('search-city')
+    # locations = {}
+    # if key:
+    #     call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/portland,or&s=json")
+    #     # call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/{search}&s=json")
+    #     locations = call.json()
+    if request.method == 'POST':
+        plan_form = BrewForm(data=request.POST)
+        if plan_form.is_valid():
+            plan = plan_form.save(commit=False)
+            plan.brew_user = request.user
+            plan.save()
+            return redirect('home')
+    else:
+        plan_form = BrewForm()
+    # return render(request, 'brewmap.html', {
+    # 'locations':locations,
+    return render(request, 'brewmap.html')
 
 @login_required
 def delete(request,id):
