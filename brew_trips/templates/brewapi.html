@@ -8,19 +8,17 @@
   <title>New Trips</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="{% static 'js/cityForm.js' %}"></script>
-
 </head>
 
 <body>
-
   <form method="GET">
     {% csrf_token %}
-    <input type="text" name="city-search" placeholder="City Search">
-    <button type="submit"> City to Search</button>
+    <input type="text" name="city-search" placeholder="City,ST">
+    <button class='form-button' type="submit"> City to Search</button>
   </form>
 
 
-  <iframe id="display" width="1700" height="1600" style="-webkit-transform:scale(0.5);-moz-transform-scale(0.5);"></iframe>
+  <iframe id="display" width="1250" height="1500" frameBorder="0" style="-webkit-transform:scale(0.7);-moz-transform-scale(0.5);"></iframe>
   <div class="plan">
 
 
@@ -29,7 +27,7 @@
     {%for location in locations%}
     <form action="{% url 'brewapi' %}" method="POST">
       {% csrf_token %}
-      <p><strong>{{location.name}}</strong></p>
+      <p class='brewery-name'><strong>{{location.name}}</strong></p>
       <input type="hidden" name="brewery_name" value="{{location.name}}" />
 
       <p>Address: {{location.street}}</p>
