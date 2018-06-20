@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% load static %}
 {% block base %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Your Trips</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="{% static 'js/cityForm.js' %}"></script>
   </head>
   <body>
+
 <form method='/save/'>
     <input id="city-search" type="text">Enter Your City </input>
+    <input type="submit" value="Search">
 </form>
+
     <h2>Your BrewTrips</h2>
     <div class="breweries">
       {%if breweries%}
       {% for brewery in breweries%}
       <div>
         <div class="card-body">
+
+          <h1>{{brewery.brewery_city}}</h1>
+
           <h2>{{brewery.brewery_name}}</h2>
           <p>{{brewery.brewery_address}}</p>
           <a href="{{brewery.brewery_url}}">{{brewery.brewery_url}}</a>

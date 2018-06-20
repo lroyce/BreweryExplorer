@@ -4,7 +4,7 @@ from .forms import BrewForm
 from .models import BrewTrips
 from django.conf import settings
 import requests
-
+from django.http import HttpResponse
 
 def home(request):
     context = {
@@ -29,7 +29,6 @@ def brewmap(request):
                 return redirect('home')
         else:
             plan_form = BrewForm()
-
         return render(request, 'brewmap.html', {
         'locations':locations,
         })
@@ -49,7 +48,9 @@ def save(request):
             brewery_city = city_search.save(commit=False)
             brewery_city.brew_user = request.user
             brewery_city.save()
-            return HTTPResponse
+        else:
+            pass
+        return HTTPResponse
 
 
 # def create(request):
