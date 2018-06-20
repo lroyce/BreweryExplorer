@@ -14,11 +14,10 @@ def signup(request):
     else:
         signup_form = SignUpForm()
     return render(request, 'signup.html',{
-            'title':'Sign up Below',
+            'title':'Sign up here',
             'signup_form':signup_form,
             'registered': registered,
             })
-
 
 def login(request):
     if request.method == 'POST':
@@ -34,7 +33,6 @@ def login(request):
             'error':'Username or Password Invalid'
             })
     return render(request, 'login.html',{'title':'Please Login'})
-
 
 def logout(request):
     if request.method == 'POST':

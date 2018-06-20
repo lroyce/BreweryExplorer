@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+import requests
 from .forms import BrewForm
 from .models import BrewTrips
 from django.conf import settings
-import requests
 from django.http import HttpResponseRedirect
 from django.template.response import TemplateResponse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 
 def home(request):
     context = {
@@ -19,6 +19,7 @@ def brewapi(request):
     locations = {}
     if 'city-search' in request.GET:
         city = request.GET['city-search']
+        
         url = f"http://beermapping.com/webservice/loccity/{key}/{city}&s=json"
         call = requests.get(url)
         locations = call.json()
