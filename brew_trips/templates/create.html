@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% block base %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>New Trips</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{% static 'js/cityForm.js' %}"></script>
+
+</head>
+
+<form action='/save/' method="POST">
+    <input id="city-search" type="text">Enter Your City </input>
+    <input type="submit" value="Search">
+</form>
+{% csrf_token %}
+
+</div>
+
+{% endblock%}
