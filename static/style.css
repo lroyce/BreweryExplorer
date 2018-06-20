@@ -32,7 +32,7 @@ body {
   position: relative;
   display: block;
   text-align: center;
-  width: 400px;
+  width: 800px;
   background-color: rgb(120,120,120,0.9);
   margin: 20px;
   padding: 20px;
@@ -77,4 +77,12 @@ body {
 
 #url {
   color: black;
+}
+
+#display {
+  position: absolute;
+  top: 0px;
+  right: -1000px;
+
+  background-color: pink;
 }

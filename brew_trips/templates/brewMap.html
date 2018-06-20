@@ -6,36 +6,50 @@
 
 <head>
   <meta charset="utf-8">
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{% static 'js/cityForm.js' %}"></script>
+
+
 </head>
+<body>
+  <iframe id="display" width="1000" height="800" style="-webkit-transform:scale(0.5);-moz-transform-scale(0.5);"></iframe>
+  <div class="plan">
 
-<div class="plan">
-  {% if locations %}
-  {%for location in locations%}
-  <form action="{% url 'brewmap' %}" method="POST">
-    {% csrf_token %}
-    <p><strong>{{location.name}}</strong></p>
-    <input type="hidden" name="brewery_name" value="{{location.name}}" />
 
-    <p>Address: {{location.street}}</p>
+    {% if locations %}
 
-    <p>{{location.city}}, {{location.state}} {{location.zip}}</p>
+    {%for location in locations%}
+    <form action="{% url 'brewmap' %}" method="POST">
+      {% csrf_token %}
+      <p><strong>{{location.name}}</strong></p>
+      <input type="hidden" name="brewery_name" value="{{location.name}}" />
 
-    <input type="hidden" name="brewery_address" value="{{location.street}} {{location.city}}, {{location.state}} {{location.zip}}" />
+      <p>Address: {{location.street}}</p>
 
-    <p>Phone: {{location.phone}}</p>
+      <p>{{location.city}}, {{location.state}} {{location.zip}}</p>
 
-    <a href='{{location.url}}'>{{location.name}} website</a>
-    <input type="hidden" name="brewery_url" value="{{location.url}}" />
+      <input type="hidden" name="brewery_address" value="{{location.street}} {{location.city}}, {{location.state}} {{location.zip}}" />
 
-    <div>
-      <input class="form-button" type="submit" value="Add Brewery" />
-    </div>
-    <hr>
-  </form>
-  {% endfor%}
-  {%else%}
-  <h3> No data to display, please enter an API Key to .env</h3> {% endif %}
-</div>
+      <p>Phone: {{location.phone}}</p>
+
+      <a href='{{location.url}}'>{{location.name}} website</a>
+      <input type="hidden" name="brewery_url" value="{{location.url}}" />
+
+      <div>
+        <input class="form-button" type="submit" value="Add Brewery" />
+      </div>
+
+      <hr>
+    </form>
+
+    <!-- http://jsfiddle.net/kbwood/DLprk/ -->
+    <input type="text" id="url" value="{{location.reviewlink}}">
+    <button width="500" height="200" type="button" id="load">Show Brewery Details</button>
+
+    {% endfor%}
+    {%else%}
+    <h3> No data to display, please enter an API Key to .env</h3> {% endif %}
+  </div>
+  </body>
 </html>
 {% endblock%}

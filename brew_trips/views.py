@@ -16,9 +16,11 @@ def home(request):
 @login_required
 def brewmap(request):
     key = settings.BEER_MAP_KEY
+    # search = request.POST('search-city')
     locations = {}
     if key:
         call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/portland,or&s=json")
+        # call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/{search}&s=json")
         locations = call.json()
         if request.method == 'POST':
             plan_form = BrewForm(data=request.POST)

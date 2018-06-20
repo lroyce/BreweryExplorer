@@ -1,11 +1,17 @@
+var $iframe = 0;
+const $city = $('#city-search').val();
 $(document).ready(function(){
-  const $city = $('#city-search').val();
 
 
-  $("button").click(function(){
-    $.post("demo_test.asp", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-    });
+  // $("button").click(function(){
+  //   $.post("demo_test.asp", function(data, status){
+  //       alert("Data: " + data + "\nStatus: " + status);
+  //   });
+  // });
+
+////////http://jsfiddle.net/kbwood/DLprk/////////
+  $('#load').click(function() {
+    $('#display').attr('src', $('#url').val());
 });
 
 
@@ -17,4 +23,4 @@ $(document).ready(function(){
   //   $.POST('/save/', {brewery_city: $city})
   //
   // });
-}
+})
