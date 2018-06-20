@@ -25,15 +25,15 @@ def brewapi(request):
         call = requests.get(url)
         locations = call.json()
 
-        if request.method == 'POST':
-            plan_form = BrewForm(data=request.POST)
-            if plan_form.is_valid():
-                plan = plan_form.save(commit=False)
-                plan.brew_user = request.user
-                plan.save()
-                return redirect('home')
-        else:
-            plan_form = BrewForm()
+    if request.method == 'POST':
+        plan_form = BrewForm(data=request.POST)
+        if plan_form.is_valid():
+            plan = plan_form.save(commit=False)
+            plan.brew_user = request.user
+            plan.save()
+            return redirect('home')
+    else:
+        plan_form = BrewForm()
 
     return render(request,'brewapi.html', {
     'locations':locations,
