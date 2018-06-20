@@ -19,9 +19,7 @@ def brewapi(request):
     locations = {}
     if 'city-search' in request.GET:
         city = request.GET['city-search']
-        print(city)
         url = f"http://beermapping.com/webservice/loccity/{key}/{city}&s=json"
-        print(url)
         call = requests.get(url)
         locations = call.json()
 
