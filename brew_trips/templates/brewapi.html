@@ -11,59 +11,52 @@
 </head>
 
 <body>
-  <form method="GET">
-    {% csrf_token %}
-    <input type="text" name="city-search" placeholder="City,ST">
-    <button class='form-button' type="submit"> City to Search</button>
-  </form>
-
-
-  <iframe id="display" width="1250" height="1500" frameBorder="0" style="-webkit-transform:scale(0.7);-moz-transform-scale(0.5);"></iframe>
-  <div class="plan">
-
-
-    {% if locations %}
-
-    {%for location in locations%}
-    <form action="{% url 'brewapi' %}" method="POST">
+  <div class="container"
+    <form method="GET">
       {% csrf_token %}
-      <p class='brewery-name'><strong>{{location.name}}</strong></p>
-      <input type="hidden" name="brewery_name" value="{{location.name}}" />
-
-      <p>Address: {{location.street}}</p>
-
-      <p>{{location.city}}, {{location.state}} {{location.zip}}</p>
-
-      <input type="hidden" name="brewery_address" value="{{location.street}} {{location.city}}, {{location.state}} {{location.zip}}" />
-
-      <p>Phone: {{location.phone}}</p>
-
-      <a href='{{location.url}}'>{{location.name}} website</a>
-      <input type="hidden" name="brewery_url" value="{{location.url}}" />
-
-      <div>
-        <input class="form-button" type="submit" value="Add Brewery" />
-      </div>
-
+      <input type="text" name="city-search" placeholder="City,ST">
+      <button class='form-button' type="submit"> City to Search</button>
     </form>
 
-    <!-- http://jsfiddle.net/kbwood/DLprk/ -->
-    <input type="hidden" id="url" value="{{location.reviewlink}}">
-    <button class='form-button'type="button" id="load">Show Brewery Details</button>
-    <hr>
+    <iframe id="display" width="1250" height="1500" frameBorder="0" style="-webkit-transform:scale(0.7);-moz-transform-scale(0.5);"></iframe>
+    <div class="plan">
 
-    {% endfor%}
-    {%else%}
-    <h3> No breweries added yet</h3> {% endif %}
+      {% if locations %}
+
+      {%for location in locations%}
+      <form action="{% url 'brewapi' %}" method="POST">
+        {% csrf_token %}
+        <p class='brewery-name'><strong>{{location.name}}</strong></p>
+        <input type="hidden" name="brewery_name" value="{{location.name}}" />
+
+        <p>Address: {{location.street}}</p>
+
+        <p>{{location.city}}, {{location.state}} {{location.zip}}</p>
+
+        <input type="hidden" name="brewery_address" value="{{location.street}} {{location.city}}, {{location.state}} {{location.zip}}" />
+
+        <p>Phone: {{location.phone}}</p>
+
+        <a href='{{location.url}}'>{{location.name}} website</a>
+        <input type="hidden" name="brewery_url" value="{{location.url}}" />
+
+        <div>
+          <input class="form-button" type="submit" value="Add Brewery" />
+        </div>
+
+      </form>
+
+      <!-- http://jsfiddle.net/kbwood/DLprk/ -->
+      <input type="hidden" id="url" value="{{location.reviewlink}}">
+      <button class='form-button'type="button" id="load">Show Brewery Details</button>
+      <hr>
+
+      {% endfor%}
+      {%else%}
+      <h3> No breweries added yet</h3> {% endif %}
+    </div>
   </div>
-
-
-
-
-
-
 </body>
 
-</div>
 
 {% endblock%}

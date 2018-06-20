@@ -2,40 +2,45 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="{% static '/style.css' %}">
-  </head>
-  <body>
-    {% block base %}
-    <div class="signup">
-      {% if registered %}
 
-      <!-- Once the user signs up, we'll show them this message -->
-      <div class="jumbotron">
-          <h4 class="text-center text-danger">Thank you for Registering</h4>
-          <a class="mt-5 btn btn-primary form-control"href="#">
-          Click Here to Login
-          </a>
-      </div>
-      {% else %}
-      <h2 class="signup">Sign Up Below</h2>
-      <form action="{% url 'signup'%}" method="POST">
-        {% csrf_token %}
-        {%for field in signup_form %}
-        {%if field.name == 'password'%}
-        {{field.label}}
-        <input class="signup" type="password" name="{{field.name}}"/>
-        {%else%}
-        {{field.label}}
-        <input class="signup" name="{{field.name}}"/>
-        {%endif%}
-        {%endfor%}
-        <input class="signup"type="submit" value="Register">
-      </form>
-      {% endif %}
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{% static 'js/cityForm.js' %}"></script>
+</head>
+
+<body>
+  {% block base %}
+  <div class="signup">
+    {% if registered %}
+
+    <div class="jumbotron">
+      <h4>Thank you for Registering</h4>
+      <a href="{% url 'login'%}">Click Here to Login</a>
     </div>
-  </body>
+
+    {% else %}
+    <h2>Sign Up Below</h2>
+
+    <form action="{% url 'signup'%}" method="POST">
+      {% csrf_token %}
+      {% for field in signup_form %}
+      {% if field.name == 'password' %}
+
+      {{field.label}}
+      <input class='signup field' type="password" name="{{field.name}}" />
+      {%else%}
+      {{field.label}}
+      <input class='signup field' name="{{field.name}}" />
+      {%endif%}
+      {%endfor%}
+      <input class="form-button" type="submit" value="Register">
+    </form>
+
+    {% endif %}
+  </div>
+</body>
+
 </html>
 {%endblock%}
