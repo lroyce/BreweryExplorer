@@ -7,6 +7,7 @@ from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
+@login_required
 def home(request):
     context = {
     'title':'Welcome To Your Trips',
@@ -14,6 +15,7 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+@login_required
 def brewapi(request):
     key = settings.BEER_MAP_KEY
     locations = {}
@@ -31,7 +33,7 @@ def brewapi(request):
             plan = plan_form.save(commit=False)
             plan.brew_user = request.user
             plan.save()
-            return redirect('home')
+            # return redirect('home')
     else:
         plan_form = BrewForm()
 
