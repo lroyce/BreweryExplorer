@@ -10,37 +10,49 @@
      <script src="{% static 'js/cityForm.js' %}"></script>
   </head>
   <body>
+    <div class='outer'>
 
+      <div class="container">
 
-    <h2>Your BrewTrips</h2>
-    <div class="breweries">
-      {%if breweries%}
-      {% for brewery in breweries%}
-      <div>
-        <div class="card-body">
+        {% if user.is_authenticated %}
 
-          <h1>{{brewery.brewery_city}}</h1>
+        {%if breweries%}
+        <h2>Your BrewTrips</h2>
 
-          <h2>{{brewery.brewery_name}}</h2>
-          <p>{{brewery.brewery_address}}</p>
-          <a href="{{brewery.brewery_url}}">{{brewery.brewery_url}}</a>
-          <p>Added on {{brewery.prettify_datetime}}</p>
-          <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
-          <button class="form-button">Remove Brewery</button>
-          </a>
-          <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
-            {%csrf_token%}
-            <!-- <input type="hidden" name="brewery.id" value="{{brewery.id}}" /> -->
-            <input type="hidden"/>
-          </form>
-        </div>
+          {% for brewery in breweries%}
+            <div>
+              <div class="card-body">
+
+                <h1>{{brewery.brewery_city}}</h1>
+                <h2>{{brewery.brewery_name}}</h2>
+                <p>{{brewery.brewery_address}}</p>
+                <a href="{{brewery.brewery_url}}">{{brewery.brewery_url}}</a>
+                <p>Added on {{brewery.prettify_datetime}}</p>
+                <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
+                <button class="form-button">Remove Brewery</button>
+                </a>
+
+                <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
+                  {%csrf_token%}
+                  <input type="hidden"/>
+                </form>
+              </div>
+            </div>
+            {% endfor %}
+
+          {%else%} <!--there were no breweries but user is is_authenticated-->
+
+          <h2 class='breweries'>Add some breweries!</h2>
+
+          {%endif%}
+
+        {%else%}
+
+        <h3>Welcome to BrewTrip! Plan brewery visits for your upcoming vacations</h3>
+
+        {%endif%}
       </div>
-      {% endfor %}
-      {%else%}
-      <h2 class='breweries'>Add some breweries!</h2>
-      {%endif%}
     </div>
-
   </body>
 </html>
 {%endblock%}

@@ -11,22 +11,26 @@
 </head>
 
 <body>
-  <div class="container"
+
+  <div class="container">
     <form method="GET">
       {% csrf_token %}
       <input type="text" name="city-search" placeholder="City,ST">
-      <button class='form-button' type="submit"> City to Search</button>
+      <button id='findcity'class='form-button' type="submit"> City to Search</button>
     </form>
+
 
     <iframe id="display" width="1250" height="1500" frameBorder="0" style="-webkit-transform:scale(0.7);-moz-transform-scale(0.5);"></iframe>
     <div class="plan">
+
+      <h2 id='city-display'>Test</h2>
 
       {% if locations %}
 
       {%for location in locations%}
       <form action="{% url 'brewapi' %}" method="POST">
         {% csrf_token %}
-        <p class='brewery-name'><strong>{{location.name}}</strong></p>
+        <!-- <p class='brewery-name'><strong>{{location.name}}</strong></p>
         <input type="hidden" name="brewery_name" value="{{location.name}}" />
 
         <p>Address: {{location.street}}</p>
@@ -42,19 +46,20 @@
 
         <div>
           <input class="form-button" type="submit" value="Add Brewery" />
-        </div>
-
+        </div> -->
+        {{form.as_p}}
       </form>
 
       <!-- http://jsfiddle.net/kbwood/DLprk/ -->
       <input type="hidden" id="url" value="{{location.reviewlink}}">
-      <button class='form-button'type="button" id="load">Show Brewery Details</button>
+      <button class='form-button' type="button" id="load">Show Brewery Details</button>
       <hr>
 
       {% endfor%}
       {%else%}
       <h3> No breweries added yet</h3> {% endif %}
     </div>
+
   </div>
 </body>
 

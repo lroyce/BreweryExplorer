@@ -42,7 +42,9 @@ body {
   padding: 20px;
   font-family: 'IM Fell DW Pica', serif;
   font-size: 20px;
-}
+  overflow: scroll;
+  height: 1000px;
+ }
 
 .container-login {
   position: relative;
@@ -53,18 +55,19 @@ body {
   margin: 30px;
   padding: 30px;
   font-family: 'IM Fell DW Pica', serif;
-  font-size: 35px;
+  font-size: 25px;
   align-self: center;
 }
 
 .outer {
   display: flex;
   justify-content: center;
+  overflow-y: scroll;
 }
 
 .username-password {
   height: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 #display {
