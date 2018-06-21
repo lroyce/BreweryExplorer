@@ -20,7 +20,7 @@ def brewapi(request):
     if 'city-search' in request.GET:
         city = request.GET['city-search']
         # city.brewery_city.save()
-        # print(brewery_city)
+        print(city)
         url = f"http://beermapping.com/webservice/loccity/{key}/{city}&s=json"
         call = requests.get(url)
         locations = call.json()
@@ -37,7 +37,7 @@ def brewapi(request):
 
     return render(request,'brewapi.html', {
     'locations':locations,
-    
+
     })
 
 
@@ -84,29 +84,9 @@ def save(request):
         return HTTPResponse
 
 
-# def create(request):
-#     if request.method == 'POST':
-#         plan_form = BrewForm(data=request.POST)
-#         if plan_form.is_valid():
-#             plan = plan_form.save(commit=False)
-#             plan.brew_user = request.user
-#             plan.save()
-#             return redirect('home')
-#     else:
-#         plan_form = BrewForm()
-#
-#     return render(request, 'create.html', {
-#     'title':'Add a new trip',
-#     'plan_form': plan_form
-#     })
-
-
-
-# def brewMap(request):
-#     key = settings.BEER_MAP_KEY
-#     locations = {}
-#     if key:
-#         call = requests.get(f"http://beermapping.com/webservice/loccity/{key}/eugene,or&s=json")
-#         locations = call.json()
-#         print(locations[0])
-#     return render(request, 'create.html', {'locations':locations})
+def yourTrips(request):
+    context = {
+    'title':'Welcome To Your Trips',
+    'breweries': BrewTrips.objects.order_by('-added_date'),
+    }
+    return render(request, 'create.html', context)

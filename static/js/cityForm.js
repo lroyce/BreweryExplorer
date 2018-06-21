@@ -1,4 +1,4 @@
-// var $iframe = 0;
+const $form = $('#my-form');
 $(document).ready(function(){
 ////////http://jsfiddle.net/kbwood/DLprk/////////
 //for loading iframe on button click ///////////
@@ -6,18 +6,44 @@ $(document).ready(function(){
     $('#display').attr('src', $('#url').val());
   });
 
+const token = $("[name=csrfmiddlewaretoken]").val();
 //keeping the city search at the top of the search//
+
+
   $('#findcity').click(function(e) {
     // const $city = $(this).attr('name');
-    const $city = $('#city-search').val();
-    alert($city)
-    $('#city-display').val($city)
+    const $city = $('#foo').val();
+
+    // $.post("/brewapi/", function(data, status){
+    //   alert("Data: " + data + "Status: " + status);
+    //   data: {
+    //     csrfmiddlewaretoken: token,
+    //     'brewCity': $city,
+    //   },
+    // })
+    const url = $form.attr('action');
+
+    //
+    // $.ajax({
+    //   url: url,
+    //   method: 'POST',
+    //   data: {
+    //     csrfmiddlewaretoken: token,
+    //     brewCity: $city,
+    //   },
+    //   success: () => {
+    //     alert('yay')
+    //   },
+    //   error: () => {
+    //     alert('boo')
+    //   }
+    // })
+
+
+
   })
 
-//   $monster.click(function(e) {
-//   var whichMonstClicked = $(this).attr('id');
-//   caught(whichMonstClicked);
-// });
+
 
 
   // $("button").click(function(){

@@ -86,7 +86,7 @@ footer > * {
   justify-content: center;
   position: absolute;
   bottom: 0;
-  right:10%;
+  right:8%;
   z-index: -1;
 }
 
