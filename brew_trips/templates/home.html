@@ -33,10 +33,19 @@
                 <button class="form-button">Remove Brewery</button>
                 </a>
 
+
+
+
+
                 <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
                   {%csrf_token%}
                   <input type="hidden"/>
                 </form>
+
+                
+
+
+
               </div>
             </div>
             {% endfor %}

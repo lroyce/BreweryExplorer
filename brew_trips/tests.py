@@ -14,8 +14,7 @@ class BrewTest(TestCase):
         self.client.get('/brewapi/', {'brewery_name': 'Central Coast Brewery', 'bar': 2})
         self.client.post('/brewapi/', {'name': 'stacey'}, follow=True)
 
-
-class MyTest(TestCase):
+class modelTest(TestCase):
     def setUp(self):
         self.user = User(username="stacey")
         self.user.save()
@@ -33,5 +32,3 @@ class MyTest(TestCase):
     def test_response_contains(self):
         response = self.client.get(reverse('login'))
         self.assertContains(response, "Username")
-
-    
