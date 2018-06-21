@@ -13,28 +13,21 @@
   <div class="plan">
 
 
-    {% if locations %}
+    {% if breweries %}
 
-    {%for location in locations%}
+    {%for brewery in breweries%}
     <form action="{% url 'brewmap' %}" method="POST">
       {% csrf_token %}
-      <p><strong>{{location.name}}</strong></p>
-      <input type="hidden" name="brewery_name" value="{{location.name}}" />
+      <p><strong>{{brewery.name}}</strong></p>
 
-      <p>Address: {{location.street}}</p>
+      <p>Address: {{brewery.street}}</p>
 
-      <p>{{location.city}}, {{location.state}} {{location.zip}}</p>
+      <p>{{brewery.city}}, {{brewery.state}} {{brewery.zip}}</p>
 
-      <input type="hidden" name="brewery_address" value="{{location.street}} {{location.city}}, {{location.state}} {{location.zip}}" />
 
-      <p>Phone: {{location.phone}}</p>
+      <p>Phone: {{brewery.phone}}</p>
 
-      <a href='{{location.url}}'>{{location.name}} website</a>
-      <input type="hidden" name="brewery_url" value="{{location.url}}" />
-
-      <div>
-        <input class="form-button" type="submit" value="Add Brewery" />
-      </div>
+      <a href='{{brewery.url}}'>{{brewery.name}} website</a>
 
       <hr>
     </form>
@@ -43,9 +36,15 @@
     <input type="text" id="url" value="{{location.reviewlink}}">
     <button width="500" height="200" type="button" id="load">Show Brewery Details</button>
 
+    <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
+      {%csrf_token%}
+      <input type="hidden"/>
+    </form>
+
     {% endfor%}
     {%else%}
-    <h3> No data to display, please enter an API Key to .env</h3> {% endif %}
+    <h3> No breweries here!v</h3>
+    {% endif %}
   </div>
   </body>
 </html>

@@ -13,11 +13,12 @@
     <div class='outer'>
 
       <div class="container">
+        {{title}}
+        <h2>Your BrewTrips</h2>
 
         {% if user.is_authenticated %}
 
         {%if breweries%}
-        <h2>Your BrewTrips</h2>
 
           {% for brewery in breweries%}
             <div>
