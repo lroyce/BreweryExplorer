@@ -1,4 +1,5 @@
 const $form = $('#my-form');
+const $favorite = $('#favorite').val();
 $(document).ready(function(){
 ////////http://jsfiddle.net/kbwood/DLprk/////////
 //for loading iframe on button click ///////////
@@ -6,46 +7,15 @@ $(document).ready(function(){
     $('#display').attr('src', $('#url').val());
   });
 
-const token = $("[name=csrfmiddlewaretoken]").val();
-//keeping the city search at the top of the search//
 
 
-  $('#findcity').click(function(e) {
-    // const $city = $(this).attr('name');
-    const $city = $('#foo').val();
-
-    // $.post("/brewapi/", function(data, status){
-    //   alert("Data: " + data + "Status: " + status);
-    //   data: {
-    //     csrfmiddlewaretoken: token,
-    //     'brewCity': $city,
-    //   },
-    // })
-    const url = $form.attr('action');
-
-    //
-    // $.ajax({
-    //   url: url,
-    //   method: 'POST',
-    //   data: {
-    //     csrfmiddlewaretoken: token,
-    //     brewCity: $city,
-    //   },
-    //   success: () => {
-    //     alert('yay')
-    //   },
-    //   error: () => {
-    //     alert('boo')
-    //   }
-    // })
-
-
+  $('#favorite').click(function() {
+    alert($favorite)
+    // if ($favorite.val() === 'False') {
+    //   $favorite.val('Not Starred')
+    }
 
   })
-
-
-
-
   // $("button").click(function(){
   //   $.post("demo_test.asp", function(data, status){
   //       alert("Data: " + data + "\nStatus: " + status);

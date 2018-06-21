@@ -20,24 +20,21 @@
 
     {%for brewery in breweries%}
 
-      <p><strong>{{brewery.brewery_name}}</strong></p>
+    <p><strong>{{brewery.brewery_name}}</strong></p>
 
-      <p>Address: {{brewery.brewery_address}}</p>
+    <p>Address: {{brewery.brewery_address}}</p>
 
-      <h2>{{brewery.brewery_city}}</h2>
+    <h2>{{brewery.brewery_city}}</h2>
 
-      <a href='{{brewery.url}}'>{{brewery.brewery_url}} website</a>
+    <a href='{{brewery.url}}'>{{brewery.brewery_url}} website</a>
 
-      <hr>
+    <a id="favorite" value="{{brewery.favorite_brewery}}" href="javascript:{document.getElementById('update-{{brewery.id}}').submit()}">
+    {{brewery.favorite_brewery}} Favorite</a>
 
-      
-      <a href="javascript:{document.getElementById('update-{{brewery.id}}').submit()}">
-      {{brewery.favorite_brewery}} Favorite</a>
-
-      <form id="update-{{brewery.id}}" action="{% url 'update' brewery.id %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" />
-      </form>
+    <form id="update-{{brewery.id}}" action="{% url 'update' brewery.id %}" method="POST">
+      {% csrf_token %}
+      <input type="hidden" />
+    </form>
 
     <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
     <button class="form-button">Remove Brewery</button>
@@ -48,6 +45,7 @@
       <input type="hidden"/>
     </form>
 
+    <hr>
     {% endfor%}
     {%else%}
 
