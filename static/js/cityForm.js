@@ -10,10 +10,10 @@ $(document).ready(function(){
 
 
   $('#favorite').click(function() {
-    alert($favorite)
+
     // if ($favorite.val() === 'False') {
     //   $favorite.val('Not Starred')
-    }
+
 
   })
   // $("button").click(function(){
