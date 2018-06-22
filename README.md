@@ -4,7 +4,7 @@
 
 * Introduction
   - My application will allow users log in and build a personalized brewery brew trip. They will be able to search for cities that they are visiting and the application will give them the breweries in the area and a map to their location. They can then click on the brewery to get more information. I would also like for the user to build a list of "must have" beers at this individual brewhouses as well as a list of their favorite beers. For both, I will use external APIs to grab the information and then store it. The user's home page will list planned outings and favorite beers and breweries based on ratings. The user schema will have username, first name, then a related table with a list of breweries and their associated city.
-  
+
 * Technologies
   - Postgres SQL will be used to create the user profiles and store the information for favorite beers and breweries for their trip. When searching for cities to visit, I will use an external api to gather the breweries. The user can click to get more information. The user can then click on them to add them to their list. There will be a lot of use of templating html to display the information being grabbed from the api.
   - This will be a lot of grabbing brewery and beer ids that will then be hidden from the user but accessible in get requests.
@@ -40,9 +40,9 @@
   - [Heroku Deployed BrewTrip](https://morning-thicket-31623.herokuapp.com/)
 
 * Screen shots
+  <img src='Screenshots/Screen Shot 2018-06-21 at 10.27.52 PM.png' width=400>
   <img src='/Screenshots/Screen Shot 2018-06-21 at 9.34.08 PM.png' width=400>
   <img src='/Screenshots/Screen Shot 2018-06-21 at 9.41.54 PM.png' width=400>
-  <img src='Screenshots/Screen Shot 2018-06-21 at 9.41.54 PM.png' width=400>
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.42.18 PM.png' width=400>
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.56.34 PM.png' width=400>
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.56.36 PM.png' width=400>
