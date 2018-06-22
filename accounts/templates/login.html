@@ -1,42 +1,44 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Log In</title>
-    <link rel="stylesheet" href="{% static '/style.css' %}">
-  </head>
-  <body>
-    {% block base %}
-    <div class='outer'>
-      <div class="container-login">
 
-        {% if error %}
-        <h5>{{error}}</h5>
-        {%else%}
-        <h2>Login</h2>
-        {%endif%}
-        <form action="{% url 'login'%}" method="POST">
+<head>
+  <meta charset="utf-8">
+  <title>Log In</title>
+  <link rel="stylesheet" href="{% static '/style.css' %}">
+</head>
 
-          {% csrf_token %}
-          <div class='username-password'>
-            Username:
-            <input class='username-password' type="text" name="username" required />
-          </div>
+<body>
+  {% block base %}
+  <div class='outer'>
+    <div class="container-login">
 
-          <div class='username-password'>
-            Password:
-            <input class='username-password' type="password" name="password" required />
-          </div>
+      {% if error %}
+      <h5>{{error}}</h5>
+      {%else%}
+      <h2>Login</h2>
+      {%endif%}
+      <form action="{% url 'login'%}" method="POST">
 
-          <div>
-            <input class="form-button" type="submit" value="Login" />
-          </div>
+        {% csrf_token %}
+        <div class='username-password'>
+          Username:
+          <input class='username-password' type="text" name="username" required />
+        </div>
 
-        </form>
-      </div>
+        <div class='username-password'>
+          Password:
+          <input class='username-password' type="password" name="password" required />
+        </div>
+
+        <div>
+          <input class="form-button" type="submit" value="Login" />
+        </div>
+
+      </form>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 {%endblock%}
