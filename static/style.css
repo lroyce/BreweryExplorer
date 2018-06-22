@@ -94,6 +94,7 @@ footer > * {
   right:8%;
   z-index: -1;
   font-size: 20px;
+  z-index: 4;
 }
 
 .form-button {
