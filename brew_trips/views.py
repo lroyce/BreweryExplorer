@@ -54,14 +54,6 @@ def whitespace(str):
         return str
 
 @login_required
-def delete(request,id):
-    if request.method == 'POST':
-        plan = get_object_or_404(BrewTrips,pk=id)
-        plan.delete()
-        return redirect('home')
-
-
-@login_required
 def brewmap(request):
     user = request.user
     id = user.id
@@ -73,6 +65,12 @@ def brewmap(request):
     }
     return render(request, 'brewmap.html', context)
 
+@login_required
+def delete(request,id):
+    if request.method == 'POST':
+        plan = get_object_or_404(BrewTrips,pk=id)
+        plan.delete()
+        return redirect('home')
 
 
 @login_required
