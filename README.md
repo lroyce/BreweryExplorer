@@ -29,10 +29,10 @@
   - Heroku deployment. Due to the model change, Heroku deployment was unexpectedly problematic. As I had already migrated and seeded the database, I had to eventually destroy the database I had on Heroku. And still it is not working correctly but is likely due to another unrelated issue.
   - The iframe button/jquery manipulation. I couldn't find much to manipulate using jquery in this project. I settled on triggering the iframe uncollapsing. Had I more time, I would have had a close button.
   - Due to not having a more robust javascript/jquery, I didn't get to use typescript. I think I should have concentrated more on jquery/javascript since I really like it but I also believe it would have required changing much of my app as it just doesn't lend itself to Jquery. One future item I could utilize Jquery for would be a ratings system.
-  * App
+* App
   - [Heroku Deployed BrewTrip](https://morning-thicket-31623.herokuapp.com/)
-  * Screen shots
-  [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.34.08 PM.png)
+* Screen shots
+  ![Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.34.08 PM.png "Screenshot 1")
   [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.41.54 PM.png)
   [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.42.18 PM.png)
   [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.56.34 PM.png)
