@@ -20,6 +20,7 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+
 @login_required
 def brewapi(request):
     key = settings.BEER_MAP_KEY
@@ -46,12 +47,14 @@ def brewapi(request):
     'locations':locations,
     })
 
+
 ###needed a quick method to help with white space after comma in city search##
 def whitespace(str):
     if ", " in str:
         return str.replace(", ", ",")
     else:
         return str
+
 
 @login_required
 def brewmap(request):
@@ -64,6 +67,7 @@ def brewmap(request):
     # 'breweries': user_breweries,
     }
     return render(request, 'brewmap.html', context)
+
 
 @login_required
 def delete(request,id):

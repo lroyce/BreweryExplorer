@@ -24,7 +24,7 @@ class AccountsTest(TestCase):
         self.assertEqual(response.status_code, 404)
         response = self.client.get('/login/')
         self.assertEqual(response.status_code, 404)
-
+#this fails but may be due to local deloyment
     @override_settings(LOGIN_URL='/login/')
     def test_login(self):
         response = self.client.get('/sekrit/')
