@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% block base %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{% static 'js/cityForm.js' %}"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+
+    <h3>{{title}}</h3>
+
+    <h2>{{breweries.brewery_city}}</h2>
+
+    {% if breweries %}
+
+    {%for brewery in breweries%}
+
+    <p><strong>{{brewery.brewery_name}}</strong></p>
+
+    <p>Address: {{brewery.brewery_address}}</p>
+
+    <h2>{{brewery.brewery_city}}</h2>
+
+    <a href='{{brewery.url}}'>{{brewery.brewery_url}} website</a>
+
+    <a id="favorite" value="{{brewery.favorite_brewery}}" href="javascript:{document.getElementById('update-{{brewery.id}}').submit()}">
+
+      {%if brewery.favorite_brewery is True%}<i class="far fa-star fa-2x"></i>
+      {%else%}
+      <p id="favorite">Favorite?</p>
+      {%endif%}
+    </a>
+
+    <form id="update-{{brewery.id}}" action="{% url 'update' brewery.id %}" method="POST">
+      {% csrf_token %}
+      <!-- <input type="hidden" /> -->
+    </form>
+
+    <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
+    <button class="form-button">Remove Brewery</button>
+    </a>
+
+    <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
+      {%csrf_token%}
+      <input type="hidden"/>
+    </form>
+
+    <hr>
+    {% endfor%}
+    {%else%}
+
+    <h3> No breweries here!</h3>
+    {% endif %}
+  </div>
+  </body>
+</html>
+{% endblock%}

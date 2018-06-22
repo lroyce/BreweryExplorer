@@ -24,6 +24,19 @@ def home(request):
 
 
 @login_required
+def favorites(request):
+    user = request.user
+    id = user.id
+    # https://stackoverflow.com/questions/20256909/django-how-to-write-query-to-sort-using-multiple-columns-display-via-template/20257999#20257999
+    user_breweries = BrewTrips.objects.filter(brew_user_id=id, favorite_brewery=True).order_by('brewery_city','added_date')
+    context = {
+    'title':f'Hello {user.first_name}',
+    'breweries': user_breweries
+    }
+    return render(request, 'favorites.html', context)
+
+
+@login_required
 def brewapi(request):
     key = settings.BEER_MAP_KEY
     locations = {}
@@ -58,17 +71,17 @@ def whitespace(str):
         return str
 
 
-@login_required
-def brewmap(request):
-    user = request.user
-    id = user.id
-    user_breweries = BrewTrips.objects.filter(brew_user_id=id)
-    context = {
-    'title':'Welcome To Your Trips',
-    'breweries': user_breweries.order_by('brewery_city'),
-    # 'breweries': user_breweries,
-    }
-    return render(request, 'brewmap.html', context)
+# @login_required
+# def brewmap(request):
+#     user = request.user
+#     id = user.id
+#     user_breweries = BrewTrips.objects.filter(brew_user_id=id)
+#     context = {
+#     'title':'Welcome To Your Trips',
+#     'breweries': user_breweries.order_by('brewery_city'),
+#     # 'breweries': user_breweries,
+#     }
+#     return render(request, 'brewmap.html', context)
 
 
 @login_required
