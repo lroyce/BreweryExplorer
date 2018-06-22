@@ -56,8 +56,8 @@
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.57.12 PM.png' width=400>
 
 * Future Goals
-  - I really wanted to have check boxes to POST all the breweries the user picked. Rather than going back and forth, re-searching, then adding.
-  - A favorites page. This seemed really easy but I ran out of time.
+  - I wanted and needed to have check boxes to POST all the breweries the user picked. Rather than going back and forth, re-searching, then adding.
+  - A favorites page. This would have been fairly easy but I ran out of time.
   - A view that would have the trips sorted by city name in separate divs. This also seemed possible had I created my models correctly or been able to manipulate the template a bit better.
   - login/password forms on the base_templates banner.
   - A third intermediary table for trips.
