@@ -31,7 +31,7 @@ def favorites(request):
     user_breweries = BrewTrips.objects.filter(brew_user_id=id, favorite_brewery=True).order_by('brewery_city','added_date')
     context = {
     'title':f'Hello {user.first_name}',
-    'breweries': user_breweries
+    'breweries': user_breweries,
     }
     return render(request, 'favorites.html', context)
 
