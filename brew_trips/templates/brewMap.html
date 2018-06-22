@@ -29,11 +29,11 @@
 
     <a href='{{brewery.url}}'>{{brewery.brewery_url}} website</a>
 
-    <a class='form-button' id="favorite" value="{{brewery.favorite_brewery}}" href="javascript:{document.getElementById('update-{{brewery.id}}').submit()}">
+    <a id="favorite" value="{{brewery.favorite_brewery}}" href="javascript:{document.getElementById('update-{{brewery.id}}').submit()}">
 
-      {%if brewery.favorite_brewery is True%}<i class="far fa-star"></i>
+      {%if brewery.favorite_brewery is True%}<i class="far fa-star fa-2x"></i>
       {%else%}
-      <p>Favorite?</p>
+      <p id="favorite">Favorite?</p>
       {%endif%}
     </a>
 
