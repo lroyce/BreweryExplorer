@@ -16,7 +16,7 @@ def home(request):
     user_breweries = BrewTrips.objects.filter(brew_user_id=id)
     context = {
     'title':f'Hello {user.first_name}',
-    'breweries':user_breweries.order_by('+brewery_city')
+    'breweries':user_breweries.order_by('-brewery_city')
     }
     return render(request, 'home.html', context)
 

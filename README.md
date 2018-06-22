@@ -24,3 +24,19 @@
   - _Tuesday_: Be able to make an api call that lists the breweries from a given city.
   - _Wednesday_: Those breweries are clickable which then takes the user to a brewery detail page and map. From that page, user can add the brewery to their list of visits. Will have first test done here. Delete and Update will be added here.
   - _Thursday_: The app will be mostly finished, try to get map to load on individual brewery page. Work on getting the favorite beers to populate from an API instead of having user enter the beer name.
+* Struggles
+  - Deciding what my model should include was a huge problem. I definitely developed the idea as I code since what I could do was based entirely on what external api I was able to get. [beermapping](https://beermapping.com/) was what I decided to use but it did not have an api endpoint that had brewery details so I had to use an iframe to their own internal webpage. Since I wasn't sure what my models would end up looking like, I did have to change them later on and realized that I should have absolutely had an intermediary table, namely: a trips table. So then my Users would have had Trips and Trips would have had Breweries. This would have made deleting a trip possible rather than deleting breweries one by one.
+  - Heroku deployment. Due to the model change, Heroku deployment was unexpectedly problematic. As I had already migrated and seeded the database, I had to eventually destroy the database I had on Heroku. And still it is not working correctly but is likely due to another unrelated issue.
+  - The iframe button/jquery manipulation. I couldn't find much to manipulate using jquery in this project. I settled on triggering the iframe uncollapsing. Had I more time, I would have had a close button.
+  - Due to not having a more robust javascript/jquery, I didn't get to use typescript. I think I should have concentrated more on jquery/javascript since I really like it but I also believe it would have required changing much of my app as it just doesn't lend itself to Jquery. One future item I could utilize Jquery for would be a ratings system.
+
+
+Struggles
+What were the challenging parts? Tell us about it. What did you learn?
+* App
+- [Heroku Deployed BrewTrip](https://morning-thicket-31623.herokuapp.com/)
+A link to the deployed app
+Screen shots of the different pages of the app
+Any other info we should know
+Future Goals
+Tell us what would like to add/fix/remove/change with more time

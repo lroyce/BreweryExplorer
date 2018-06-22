@@ -53,6 +53,7 @@ body {
 .container-login {
   position: relative;
   display:inline-block;
+  align-content: center;
   text-align: center;
   width: 600px;
   background-color: rgb(120,120,120,0.9);
@@ -92,6 +93,7 @@ footer > * {
   bottom: 0;
   right:8%;
   z-index: -1;
+  font-size: 20px;
 }
 
 .form-button {
