@@ -50,13 +50,16 @@
       </form>
 
       <!-- http://jsfiddle.net/kbwood/DLprk/ -->
+
       <input type="hidden" id="url" value="{{location.reviewlink}}">
       <button class='form-button' type="button" id="load">Show Brewery Details</button>
+
       <hr>
 
       {% endfor%}
       {%else%}
-      <h3> No breweries added yet</h3> {% endif %}
+      <h3> No breweries added yet</h3>
+      {% endif %}
     </div>
 
   </div>
