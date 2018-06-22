@@ -20,7 +20,7 @@
       <button id='findcity'class='form-button' type="submit"> City to Search</button>
     </form>
 
-    <iframe id="display" width="1250" height="1500" frameBorder="0" style="-webkit-transform:scale(0.7);-moz-transform-scale(0.5);"></iframe>
+    <iframe id="display" width="1190" height="1500" frameBorder="0" style="-webkit-transform:scale(0.7);-moz-transform-scale(0.5);"></iframe>
     <div class="plan">
 
       {% if locations %}
@@ -51,8 +51,13 @@
 
       <!-- http://jsfiddle.net/kbwood/DLprk/ -->
 
-      <input type="hidden" id="url" value="{{location.reviewlink}}">
-      <button class='form-button' type="button" id="load">Show Brewery Details</button>
+      <!-- <input type="hidden" id="url" value="{#}{{location.reviewlink}}#}"> -->
+      <!-- <button class='form-button' type="button" id="load">Show Brewery Details</button> -->
+
+        <input type="hidden"value="{{location.reviewlink}}">
+        <button class='form-button-map' id={{location.reviewlink}} type="button">Show Brewery Details</button>
+
+
 
       <hr>
 
