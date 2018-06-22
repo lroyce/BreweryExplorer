@@ -40,12 +40,19 @@
   - [Heroku Deployed BrewTrip](https://morning-thicket-31623.herokuapp.com/)
 
 * Screen shots
+
   <img src='Screenshots/Screen Shot 2018-06-21 at 10.27.52 PM.png' width=400>
+
   <img src='/Screenshots/Screen Shot 2018-06-21 at 9.34.08 PM.png' width=400>
+
   <img src='/Screenshots/Screen Shot 2018-06-21 at 9.41.54 PM.png' width=400>
+
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.42.18 PM.png' width=400>
+
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.56.34 PM.png' width=400>
+
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.56.36 PM.png' width=400>
+
   <img src='Screenshots/Screen Shot 2018-06-21 at 9.57.12 PM.png' width=400>
 
 * Future Goals
