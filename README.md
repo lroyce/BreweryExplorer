@@ -31,11 +31,17 @@
   - Due to not having a more robust javascript/jquery, I didn't get to use typescript. I think I should have concentrated more on jquery/javascript since I really like it but I also believe it would have required changing much of my app as it just doesn't lend itself to Jquery. One future item I could utilize Jquery for would be a ratings system.
   * App
   - [Heroku Deployed BrewTrip](https://morning-thicket-31623.herokuapp.com/)
-Screen shots of the different pages of the app
-Any other info we should know
+  * Screen shots
+  [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.34.08 PM.png)
+  [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.41.54 PM.png)
+  [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.42.18 PM.png)
+  [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.56.34 PM.png)
+  [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.56.36 PM.png)
+  [Screenshots](Screenshots/Screen Shot 2018-06-21 at 9.57.12 PM.png)
   * Future Goals
-  - I really want to have check boxes to POST all the breweries the user picked. Rather than going back and forth, re-searching, then adding.
+  - I really wanted to have check boxes to POST all the breweries the user picked. Rather than going back and forth, re-searching, then adding.
   - A favorites page. This seemed really easy but I ran out of time.
   - A view that would have the trips sorted by city name in separate divs. This also seemed possible had I created my models correctly or been able to manipulate the template a bit better.
-  
-Tell us what would like to add/fix/remove/change with more time
+  - login/password forms on the base_templates banner.
+  - A third intermediary table for trips.
+  - A fourth table for beers by brewery.
