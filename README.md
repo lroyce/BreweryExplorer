@@ -29,14 +29,13 @@
   - Heroku deployment. Due to the model change, Heroku deployment was unexpectedly problematic. As I had already migrated and seeded the database, I had to eventually destroy the database I had on Heroku. And still it is not working correctly but is likely due to another unrelated issue.
   - The iframe button/jquery manipulation. I couldn't find much to manipulate using jquery in this project. I settled on triggering the iframe uncollapsing. Had I more time, I would have had a close button.
   - Due to not having a more robust javascript/jquery, I didn't get to use typescript. I think I should have concentrated more on jquery/javascript since I really like it but I also believe it would have required changing much of my app as it just doesn't lend itself to Jquery. One future item I could utilize Jquery for would be a ratings system.
-
-
-Struggles
-What were the challenging parts? Tell us about it. What did you learn?
-* App
-- [Heroku Deployed BrewTrip](https://morning-thicket-31623.herokuapp.com/)
-A link to the deployed app
+  * App
+  - [Heroku Deployed BrewTrip](https://morning-thicket-31623.herokuapp.com/)
 Screen shots of the different pages of the app
 Any other info we should know
-Future Goals
+  * Future Goals
+  - I really want to have check boxes to POST all the breweries the user picked. Rather than going back and forth, re-searching, then adding.
+  - A favorites page. This seemed really easy but I ran out of time.
+  - A view that would have the trips sorted by city name in separate divs. This also seemed possible had I created my models correctly or been able to manipulate the template a bit better.
+  
 Tell us what would like to add/fix/remove/change with more time
