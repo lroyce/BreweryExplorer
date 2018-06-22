@@ -13,10 +13,11 @@ from django.contrib.auth.models import User
 def home(request):
     user = request.user
     id = user.id
-    user_breweries = BrewTrips.objects.filter(brew_user_id=id)
+    user_breweries = BrewTrips.objects.filter(brew_user_id=id).order_by('brewery_city').order_by('added_date')
+
     context = {
     'title':f'Hello {user.first_name}',
-    'breweries':user_breweries.order_by('-brewery_city')
+    'breweries': user_breweries
     }
     return render(request, 'home.html', context)
 
