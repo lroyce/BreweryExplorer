@@ -26,6 +26,7 @@
       {% if locations %}
       <h2>Searching in: {{locations.0.city}}, {{locations.0.state}}</h2>
       {%for location in locations%}
+  
       <form id="my-form" action="{% url 'brewapi' %}" method="POST">
         {% csrf_token %}
         <p class='brewery-name'><strong>{{location.name}}</strong></p>

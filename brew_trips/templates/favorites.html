@@ -20,36 +20,37 @@
     {% if breweries %}
 
     {%for brewery in breweries%}
+      <div class="card-body">
+        <h2><strong>{{brewery.brewery_name}}</strong></h2>
 
-    <p><strong>{{brewery.brewery_name}}</strong></p>
+        <p>Address: {{brewery.brewery_address}}</p>
 
-    <p>Address: {{brewery.brewery_address}}</p>
+        <h2>{{brewery.brewery_city}}</h2>
 
-    <h2>{{brewery.brewery_city}}</h2>
+        <a href='{{brewery.url}}'>{{brewery.brewery_url}} website</a>
 
-    <a href='{{brewery.url}}'>{{brewery.brewery_url}} website</a>
+        <a id="favorite" value="{{brewery.favorite_brewery}}" href="javascript:{document.getElementById('update-{{brewery.id}}').submit()}">
 
-    <a id="favorite" value="{{brewery.favorite_brewery}}" href="javascript:{document.getElementById('update-{{brewery.id}}').submit()}">
+          {%if brewery.favorite_brewery is True%}<i class="far fa-star fa-2x"></i>
+          {%else%}
+          <p id="favorite">Favorite?</p>
+          {%endif%}
+        </a>
 
-      {%if brewery.favorite_brewery is True%}<i class="far fa-star fa-2x"></i>
-      {%else%}
-      <p id="favorite">Favorite?</p>
-      {%endif%}
-    </a>
+        <form id="update-{{brewery.id}}" action="{% url 'update' brewery.id %}" method="POST">
+          {% csrf_token %}
+          <!-- <input type="hidden" /> -->
+        </form>
 
-    <form id="update-{{brewery.id}}" action="{% url 'update' brewery.id %}" method="POST">
-      {% csrf_token %}
-      <!-- <input type="hidden" /> -->
-    </form>
+        <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
+        <button class="form-button">Remove Brewery</button>
+        </a>
 
-    <a href="javascript:{document.getElementById('delete-{{brewery.id}}').submit()}" >
-    <button class="form-button">Remove Brewery</button>
-    </a>
-
-    <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
-      {%csrf_token%}
-      <input type="hidden"/>
-    </form>
+        <form id="delete-{{brewery.id}}" action="{% url 'delete' brewery.id %}" method="POST">
+          {%csrf_token%}
+          <input type="hidden"/>
+        </form>
+      </div>
 
     <hr>
     {% endfor%}
