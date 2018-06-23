@@ -71,19 +71,6 @@ def whitespace(str):
         return str
 
 
-# @login_required
-# def brewmap(request):
-#     user = request.user
-#     id = user.id
-#     user_breweries = BrewTrips.objects.filter(brew_user_id=id)
-#     context = {
-#     'title':'Welcome To Your Trips',
-#     'breweries': user_breweries.order_by('brewery_city'),
-#     # 'breweries': user_breweries,
-#     }
-#     return render(request, 'brewmap.html', context)
-
-
 @login_required
 def delete(request,id):
     if request.method == 'POST':
