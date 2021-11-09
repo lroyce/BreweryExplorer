@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/jquery": "^3.3.3"
+    "@types/jquery": "^3.5.8"
   }
 }
